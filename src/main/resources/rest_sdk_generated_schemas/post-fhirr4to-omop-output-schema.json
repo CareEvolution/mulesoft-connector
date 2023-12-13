@@ -1,0 +1,2616 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "#/definitions/OmopBundle",
+  "definitions": {
+    "ConvertedMeasurement": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "eventId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "operatorConcept": {"$ref": "#/definitions/SourceConcept"},
+        "valueAsConcept": {"$ref": "#/definitions/SourceConcept"},
+        "rangeLow": {"anyOf": [
+          {"type": "number"},
+          {"type": "null"}
+        ]},
+        "eventFieldConceptId": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "unitConcept": {"$ref": "#/definitions/SourceConcept"},
+        "rangeHigh": {"anyOf": [
+          {"type": "number"},
+          {"type": "null"}
+        ]},
+        "providerId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "measurementType": {"$ref": "#/definitions/OmopTypeConceptId"},
+        "visitDetail": {"$ref": "#/definitions/ConvertedVisitDetail"},
+        "measurementConcept": {"$ref": "#/definitions/SourceConcept"},
+        "personId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "measurementDatetime": {
+          "format": "date-time",
+          "readOnly": true,
+          "type": "string"
+        },
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "sourceValue": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "valueAsNumber": {"anyOf": [
+          {"type": "number"},
+          {"type": "null"}
+        ]},
+        "dataSource": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "visitOccurrence": {"$ref": "#/definitions/ConvertedVisitOccurrence"}
+      }
+    },
+    "OmopDomain": {
+      "maximum": 2147483647,
+      "type": "integer",
+      "minimum": -2147483648,
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    "DemographicIdentifierNaturalKey": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "identifier": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "demographicID": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "assigningAuthorityID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "typeID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        }
+      }
+    },
+    "ConvertedConcept": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "code": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "vocabularyId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "domain": {"$ref": "#/definitions/OmopDomain"},
+        "concept": {"$ref": "#/definitions/OmopConceptType"},
+        "conceptValue": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "name": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "conceptId": {
+          "maximum": 2147483647,
+          "readOnly": true,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "validStartDate": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "validEndDate": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "domainValue": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "class": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "invalidReason": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "ConvertedSpecimen": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "specimenDatetime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "unitConcept": {"$ref": "#/definitions/SourceConcept"},
+        "quantity": {"anyOf": [
+          {"type": "number"},
+          {"type": "null"}
+        ]},
+        "anatomicSiteConcept": {"$ref": "#/definitions/SourceConcept"},
+        "diseaseStatusConcept": {"$ref": "#/definitions/SourceConcept"},
+        "specimenConcept": {"$ref": "#/definitions/SourceConcept"},
+        "personId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "specimenType": {"$ref": "#/definitions/OmopTypeConceptId"},
+        "dataSource": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "specimenSourceId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "DemographicContactInfo": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "extension": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "modifiedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "insertedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "propertiesXml": {"anyOf": [
+          {
+            "type": "array",
+            "items": {}
+          },
+          {"type": "null"}
+        ]},
+        "insertedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "localNumber": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "contactInfoUseCode": {"$ref": "#/definitions/Term"},
+        "demographicID": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "areaCode": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "insertedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "countryCode": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "tenantID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "naturalKey": {"$ref": "#/definitions/DemographicContactInfoNaturalKey"},
+        "comment": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "contactInfoType": {"$ref": "#/definitions/Term"},
+        "properties": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/PropertyBagItem"}
+          },
+          {"type": "null"}
+        ]},
+        "modifiedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "info": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "ConvertedNote": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "noteTitle": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "noteText": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "noteEventId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "noteDatetime": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "language": {"$ref": "#/definitions/SourceConcept"},
+        "encoding": {"$ref": "#/definitions/SourceConcept"},
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "noteType": {"$ref": "#/definitions/OmopTypeConceptId"},
+        "providerId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "visitDetail": {"$ref": "#/definitions/ConvertedVisitDetail"},
+        "personId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "dataSource": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "visitOccurrence": {"$ref": "#/definitions/ConvertedVisitOccurrence"},
+        "noteClass": {"$ref": "#/definitions/SourceConcept"},
+        "noteEventFieldConceptId": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "ConvertedVisitOccurrence": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "preceedingEncounterId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "careSiteId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "start": {
+          "format": "date-time",
+          "readOnly": true,
+          "type": "string"
+        },
+        "hiebusClaimId": {"anyOf": [
+          {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "type": {"$ref": "#/definitions/OmopTypeConceptId"},
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "visitConcept": {"$ref": "#/definitions/SourceConcept"},
+        "providerId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "hiebusEncounterId": {"anyOf": [
+          {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "personId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "end": {
+          "format": "date-time",
+          "readOnly": true,
+          "type": "string"
+        },
+        "details": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedVisitDetail"}
+          },
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "admittedFrom": {"$ref": "#/definitions/SourceConcept"},
+        "dataSource": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "dischargedTo": {"$ref": "#/definitions/SourceConcept"}
+      }
+    },
+    "ConvertedName": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "firstName": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "lastName": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "prefix": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "middleName": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "personId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "suffix": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "dataSource": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "ConvertedVisitDetail": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "careSiteId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "parentVisitDetailId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "start": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "visitDetailConcept": {"$ref": "#/definitions/SourceConcept"},
+        "type": {"$ref": "#/definitions/OmopTypeConceptId"},
+        "precedingVisitDetailId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "providerId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "hiebusEncounterId": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "personId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "end": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "admittedFrom": {"$ref": "#/definitions/SourceConcept"},
+        "dischargedTo": {"$ref": "#/definitions/SourceConcept"},
+        "visitOccurrence": {"$ref": "#/definitions/ConvertedVisitOccurrence"}
+      }
+    },
+    "ConvertedObservation": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "eventId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "valueAsConcept": {"$ref": "#/definitions/SourceConcept"},
+        "eventFieldConceptId": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "valueAsString": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "observationDateTime": {
+          "format": "date-time",
+          "readOnly": true,
+          "type": "string"
+        },
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "observationConcept": {"$ref": "#/definitions/SourceConcept"},
+        "unitConcept": {"$ref": "#/definitions/SourceConcept"},
+        "observationType": {"$ref": "#/definitions/OmopTypeConceptId"},
+        "providerId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "visitDetail": {"$ref": "#/definitions/ConvertedVisitDetail"},
+        "personId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "valueAsNumber": {"anyOf": [
+          {"type": "number"},
+          {"type": "null"}
+        ]},
+        "valueAsDatetime": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "dataSource": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "qualifierConcept": {"$ref": "#/definitions/SourceConcept"},
+        "visitOccurrence": {"$ref": "#/definitions/ConvertedVisitOccurrence"}
+      }
+    },
+    "HendrixCodeSystem": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "extensionUrlBase": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "name": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "description": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "systemUrl": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "MessageType": {
+      "maximum": 2147483647,
+      "type": "integer",
+      "minimum": -2147483648,
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "DemographicName": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "lastName": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "modifiedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "credentials": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "insertedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "insertedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "title": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "suffix": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "type": {"$ref": "#/definitions/Term"},
+        "firstName": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "demographicID": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "insertedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "tenantID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "naturalKey": {"$ref": "#/definitions/DemographicNameNaturalKey"},
+        "middleName": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "modifiedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "ConvertedPerson": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "careSiteId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "gender": {"$ref": "#/definitions/SourceConcept"},
+        "race": {"$ref": "#/definitions/SourceConcept"},
+        "ethnicity": {"$ref": "#/definitions/SourceConcept"},
+        "monthOfBirth": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "phoneNumbers": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          {"type": "null"}
+        ]},
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "personSourceValue": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "emailAddresses": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          {"type": "null"}
+        ]},
+        "names": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedName"}
+          },
+          {"type": "null"}
+        ]},
+        "dayOfBirth": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "providerId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "patient": {"$ref": "#/definitions/Patient"},
+        "primaryLocationId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "mrNs": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedMRN"}
+          },
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "birthDateTime": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "yearOfBirth": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "addressLocationIds": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "QualityReportMessage": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "code": {"$ref": "#/definitions/HendrixCode"},
+        "level": {"$ref": "#/definitions/MessageLevel"},
+        "personId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "text": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "type": {"$ref": "#/definitions/MessageType"}
+      }
+    },
+    "Term": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "code": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "modifiedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "insertedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "insertedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "mappedTargets": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/MappedTargetTerm"}
+          },
+          {"type": "null"}
+        ]},
+        "hasCodedValue": {
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "insertedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "name": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "namespace": {"$ref": "#/definitions/TermNamespace"},
+        "tenantID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "naturalKey": {"$ref": "#/definitions/TermNaturalKey"},
+        "isPartiallyLoaded": {"type": "boolean"},
+        "id": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "family": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "modifiedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "OmopBundle": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "includePiiTables": {
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "notes": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedNote"}
+          },
+          {"type": "null"}
+        ]},
+        "drugExposures": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedDrugExposure"}
+          },
+          {"type": "null"}
+        ]},
+        "deviceExposures": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedDeviceExposure"}
+          },
+          {"type": "null"}
+        ]},
+        "specimens": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedSpecimen"}
+          },
+          {"type": "null"}
+        ]},
+        "processingLog": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/QualityReportMessage"}
+          },
+          {"type": "null"}
+        ]},
+        "conditionOccurrences": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedConditionOccurrence"}
+          },
+          {"type": "null"}
+        ]},
+        "careSites": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedCareSite"}
+          },
+          {"type": "null"}
+        ]},
+        "persons": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedPerson"}
+          },
+          {"type": "null"}
+        ]},
+        "visitOccurrences": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedVisitOccurrence"}
+          },
+          {"type": "null"}
+        ]},
+        "concepts": {"anyOf": [
+          {
+            "uniqueItems": true,
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedConcept"}
+          },
+          {"type": "null"}
+        ]},
+        "omopVersion": {"$ref": "#/definitions/OMOPVersion"},
+        "procedureOccurrences": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedProcedureOccurrence"}
+          },
+          {"type": "null"}
+        ]},
+        "observations": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedObservation"}
+          },
+          {"type": "null"}
+        ]},
+        "locations": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedLocation"}
+          },
+          {"type": "null"}
+        ]},
+        "deaths": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedDeath"}
+          },
+          {"type": "null"}
+        ]},
+        "providers": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedProvider"}
+          },
+          {"type": "null"}
+        ]},
+        "measurements": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/ConvertedMeasurement"}
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "HendrixCode": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "system": {"$ref": "#/definitions/HendrixCodeSystem"},
+        "code": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "DemographicIdentifier": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "assigningFacility": {"$ref": "#/definitions/Term"},
+        "identifier": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "modifiedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "insertedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "assigningAuthority": {"$ref": "#/definitions/AssigningAuthority"},
+        "insertedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "type": {"$ref": "#/definitions/Term"},
+        "demographicID": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "insertedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "tenantID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "naturalKey": {"$ref": "#/definitions/DemographicIdentifierNaturalKey"},
+        "id": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "modifiedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "Demographic": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "addresses": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/DemographicAddress"}
+          },
+          {"type": "null"}
+        ]},
+        "religionAlternate": {"$ref": "#/definitions/Term"},
+        "preferredLanguage": {"$ref": "#/definitions/Term"},
+        "deceased": {"type": "boolean"},
+        "gender": {"$ref": "#/definitions/Term"},
+        "ethnicity": {"$ref": "#/definitions/Term"},
+        "insertedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "insertedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "preferredLanguageText": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "preferredLanguageAlternate": {"$ref": "#/definitions/Term"},
+        "insertedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ethnicityAlternate": {"$ref": "#/definitions/Term"},
+        "tenantID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "isPartiallyLoaded": {"type": "boolean"},
+        "maritalStatusText": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "birthSex": {"$ref": "#/definitions/Term"},
+        "id": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "modifiedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "race": {"$ref": "#/definitions/Term"},
+        "modifiedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "identifiers": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/DemographicIdentifier"}
+          },
+          {"type": "null"}
+        ]},
+        "multipleBirth": {"anyOf": [
+          {"type": "boolean"},
+          {"type": "null"}
+        ]},
+        "religion": {"$ref": "#/definitions/Term"},
+        "raceAlternate": {"$ref": "#/definitions/Term"},
+        "ethnicityText": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "multipleBirthOrder": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "names": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/DemographicName"}
+          },
+          {"type": "null"}
+        ]},
+        "religionText": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "dob": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "raceText": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "contactInfos": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/DemographicContactInfo"}
+          },
+          {"type": "null"}
+        ]},
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "deceasedDate": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "maritalStatus": {"$ref": "#/definitions/Term"},
+        "maritalStatusAlternate": {"$ref": "#/definitions/Term"}
+      }
+    },
+    "ConvertedDrugExposure": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "stopReason": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "quantity": {"anyOf": [
+          {"type": "number"},
+          {"type": "null"}
+        ]},
+        "daysSupply": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "lotNumber": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "drugType": {"$ref": "#/definitions/OmopTypeConceptId"},
+        "drug": {"$ref": "#/definitions/SourceConcept"},
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "sig": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "doseUnitSourceValue": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "refills": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "route": {"$ref": "#/definitions/SourceConcept"},
+        "providerId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "exposureStart": {
+          "format": "date-time",
+          "readOnly": true,
+          "type": "string"
+        },
+        "exposureEnd": {
+          "format": "date-time",
+          "readOnly": true,
+          "type": "string"
+        },
+        "visitDetail": {"$ref": "#/definitions/ConvertedVisitDetail"},
+        "personId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "verbatimEnd": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "dataSource": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "visitOccurrence": {"$ref": "#/definitions/ConvertedVisitOccurrence"}
+      }
+    },
+    "AssigningAuthorityNaturalKey": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "namespaceIdentifier": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "universalIdentifierType": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "universalIdentifier": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "DemographicNameNaturalKey": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "demographicID": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "typeID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        }
+      }
+    },
+    "OmopTypeConceptId": {
+      "maximum": 2147483647,
+      "type": "integer",
+      "minimum": -2147483648,
+      "enum": [
+        0,
+        32810,
+        32817,
+        32818,
+        32838,
+        32840,
+        32869
+      ]
+    },
+    "TermNaturalKey": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "code": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "namespaceID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "family": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "OmopConceptType": {
+      "maximum": 2147483647,
+      "type": "integer",
+      "minimum": -2147483648,
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "RecordAuthority": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "code": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "modifiedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "insertedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "insertedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "storesPlainPatientIdentifier": {"type": "boolean"},
+        "insertedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "name": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "tenantID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "siteID": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "naturalKey": {"$ref": "#/definitions/RecordAuthorityNaturalKey"},
+        "isPartiallyLoaded": {"type": "boolean"},
+        "id": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "modifiedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "PatientNaturalKey": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "identifier": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "recordAuthorityID": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "ConvertedLocation": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "zip": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "address2": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "city": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "address1": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "latitude": {"anyOf": [
+          {"type": "number"},
+          {"type": "null"}
+        ]},
+        "county": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "countryConcept": {"$ref": "#/definitions/SourceConcept"},
+        "locationSourceValue": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "personId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "state": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "dataSource": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "longitude": {"anyOf": [
+          {"type": "number"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "DemographicAddressNaturalKey": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "demographicID": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "typeID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        }
+      }
+    },
+    "ConvertedProcedureOccurrence": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "procedureType": {"$ref": "#/definitions/OmopTypeConceptId"},
+        "quantity": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "modifier": {"$ref": "#/definitions/SourceConcept"},
+        "procedureEnd": {"anyOf": [
+          {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "procedure": {"$ref": "#/definitions/SourceConcept"},
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "procedureStart": {
+          "format": "date-time",
+          "readOnly": true,
+          "type": "string"
+        },
+        "providerId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "visitDetail": {"$ref": "#/definitions/ConvertedVisitDetail"},
+        "personId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "dataSource": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "visitOccurrence": {"$ref": "#/definitions/ConvertedVisitOccurrence"}
+      }
+    },
+    "MappedTargetTerm": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "code": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "name": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "namespace": {"$ref": "#/definitions/TermNamespace"},
+        "id": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "family": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "OMOPVersion": {
+      "maximum": 2147483647,
+      "type": "integer",
+      "minimum": -2147483648,
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "MessageLevel": {
+      "maximum": 2147483647,
+      "type": "integer",
+      "minimum": -2147483648,
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "ConvertedCareSite": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "careSiteName": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "locationId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "personId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "placeOfService": {"$ref": "#/definitions/SourceConcept"},
+        "careSiteSourceValue": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "dataSource": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "ConvertedMRN": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "healthSystem": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "mrn": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "ConvertedConditionOccurrence": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "stopReason": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "conditionStart": {
+          "format": "date-time",
+          "readOnly": true,
+          "type": "string"
+        },
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "conditionEnd": {"anyOf": [
+          {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "condition": {"$ref": "#/definitions/SourceConcept"},
+        "conditionStatus": {"$ref": "#/definitions/SourceConcept"},
+        "providerId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "visitDetail": {"$ref": "#/definitions/ConvertedVisitDetail"},
+        "personId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "conditionType": {"$ref": "#/definitions/OmopTypeConceptId"},
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "dataSource": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "visitOccurrence": {"$ref": "#/definitions/ConvertedVisitOccurrence"}
+      }
+    },
+    "ConvertedProvider": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "dea": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "specialty": {"$ref": "#/definitions/SourceConcept"},
+        "careSiteId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "gender": {"$ref": "#/definitions/SourceConcept"},
+        "npi": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "hiebusId": {
+          "format": "uuid",
+          "readOnly": true,
+          "type": "string"
+        },
+        "providerSourceValue": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "personId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "dataSource": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "providerName": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "yearOfBirth": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "ConvertedDeath": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "causeConcept": {"$ref": "#/definitions/SourceConcept"},
+        "deathDateTime": {
+          "format": "date-time",
+          "readOnly": true,
+          "type": "string"
+        },
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "deathType": {"$ref": "#/definitions/OmopTypeConceptId"},
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "SourceConcept": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "sourceConceptId": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "term": {"$ref": "#/definitions/Term"},
+        "sourceValue": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "standardConceptId": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        }
+      }
+    },
+    "Patient": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "accessPolicyID": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "identifier": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "isOptedOut": {"anyOf": [
+          {"type": "boolean"},
+          {"type": "null"}
+        ]},
+        "recordAuthority": {"$ref": "#/definitions/RecordAuthority"},
+        "modifiedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "insertedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "optDecisionDate": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "insertedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "sensitiveDecisionDate": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "demographic": {"$ref": "#/definitions/Demographic"},
+        "recordID": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "insertedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "isSensitive": {"anyOf": [
+          {"type": "boolean"},
+          {"type": "null"}
+        ]},
+        "tenantID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "naturalKey": {"$ref": "#/definitions/PatientNaturalKey"},
+        "isPartiallyLoaded": {"type": "boolean"},
+        "id": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "encryptedIdentifier": {"anyOf": [
+          {
+            "format": "byte",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "modifiedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "TermNamespace": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "code": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "modifiedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "insertedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "insertedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "hasValue": {
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "version": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "insertedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "isCanonical": {"type": "boolean"},
+        "name": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "tenantID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "naturalKey": {"$ref": "#/definitions/TermNamespaceNaturalKey"},
+        "isPartiallyLoaded": {"type": "boolean"},
+        "id": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "modifiedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "TermNamespaceNaturalKey": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "code": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "tenantID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "version": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "PropertyBagItem": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "name": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "tenantID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "value": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "AssigningAuthority": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "modifiedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "insertedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "namespaceIdentifier": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "insertedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "insertedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "universalIdentifierType": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "universalIdentifier": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "tenantID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "naturalKey": {"$ref": "#/definitions/AssigningAuthorityNaturalKey"},
+        "isPartiallyLoaded": {"type": "boolean"},
+        "id": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "modifiedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "DemographicAddress": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "country": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "street3": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "modifiedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "city": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "insertedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "postalCode": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "propertiesXml": {"anyOf": [
+          {
+            "type": "array",
+            "items": {}
+          },
+          {"type": "null"}
+        ]},
+        "county": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "insertedByApplicationID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "activeTo": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "type": {"$ref": "#/definitions/Term"},
+        "demographicID": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "insertedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "tenantID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "naturalKey": {"$ref": "#/definitions/DemographicAddressNaturalKey"},
+        "street1": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "street2": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "state": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "activeFrom": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "properties": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/PropertyBagItem"}
+          },
+          {"type": "null"}
+        ]},
+        "modifiedByUserID": {"anyOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "RecordAuthorityNaturalKey": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "code": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "tenantID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "siteID": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "DemographicContactInfoNaturalKey": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "demographicID": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "contactInfoTypeID": {
+          "maximum": 2147483647,
+          "type": "integer",
+          "minimum": -2147483648
+        },
+        "contactInfoUseCodeID": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "ConvertedDeviceExposure": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "deviceType": {"$ref": "#/definitions/OmopTypeConceptId"},
+        "uniqueDeviceId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "quantity": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "start": {
+          "format": "date-time",
+          "readOnly": true,
+          "type": "string"
+        },
+        "tableName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "unit": {"$ref": "#/definitions/SourceConcept"},
+        "deviceConcept": {"$ref": "#/definitions/SourceConcept"},
+        "providerId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "productionId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "visitDetail": {"$ref": "#/definitions/ConvertedVisitDetail"},
+        "personId": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "end": {"anyOf": [
+          {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "dataSource": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "visitOccurrence": {"$ref": "#/definitions/ConvertedVisitOccurrence"}
+      }
+    }
+  }
+}

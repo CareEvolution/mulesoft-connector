@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "#/definitions/schema",
+  "definitions": {"schema": {"anyOf": [
+    {"type": "string"},
+    {"type": "null"}
+  ]}}
+}

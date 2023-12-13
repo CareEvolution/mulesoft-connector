@@ -1,0 +1,2003 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "#/definitions/Bundle",
+  "definitions": {
+    "Base64Binary": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "objectValue": {"anyOf": [
+          {},
+          {"type": "null"}
+        ]},
+        "value": {"anyOf": [
+          {
+            "format": "byte",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "HTTPVerb": {
+      "maximum": 2147483647,
+      "type": "integer",
+      "minimum": -2147483648,
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "Meta": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "lastUpdatedElement": {"$ref": "#/definitions/Instant"},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "profileElement": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Canonical"}
+          },
+          {"type": "null"}
+        ]},
+        "profile": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          {"type": "null"}
+        ]},
+        "sourceElement": {"$ref": "#/definitions/FhirUri"},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "source": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "lastUpdated": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "versionId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "security": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Coding"}
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "tag": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Coding"}
+          },
+          {"type": "null"}
+        ]},
+        "versionIdElement": {"$ref": "#/definitions/Id"}
+      }
+    },
+    "FhirString": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "objectValue": {"anyOf": [
+          {},
+          {"type": "null"}
+        ]},
+        "value": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "Canonical": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "objectValue": {"anyOf": [
+          {},
+          {"type": "null"}
+        ]},
+        "value": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "SearchEntryMode": {
+      "maximum": 2147483647,
+      "type": "integer",
+      "minimum": -2147483648,
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "Element": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "FhirUri": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "objectValue": {"anyOf": [
+          {},
+          {"type": "null"}
+        ]},
+        "value": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "FhirDateTime": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "objectValue": {"anyOf": [
+          {},
+          {"type": "null"}
+        ]},
+        "value": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "HTTPVerbCode": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "objectValue": {"anyOf": [
+          {},
+          {"type": "null"}
+        ]},
+        "value": {"$ref": "#/definitions/HTTPVerb"}
+      }
+    },
+    "Identifier": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "period": {"$ref": "#/definitions/Period"},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "use": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "assigner": {"$ref": "#/definitions/ResourceReference"},
+        "type": {"$ref": "#/definitions/CodeableConcept"},
+        "system": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "useElement": {"$ref": "#/definitions/Code"},
+        "valueElement": {"$ref": "#/definitions/FhirString"},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "value": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "systemElement": {"$ref": "#/definitions/FhirUri"}
+      }
+    },
+    "BundleType": {
+      "maximum": 2147483647,
+      "type": "integer",
+      "minimum": -2147483648,
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "Coding": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "code": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "userSelected": {"anyOf": [
+          {"type": "boolean"},
+          {"type": "null"}
+        ]},
+        "display": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "versionElement": {"$ref": "#/definitions/FhirString"},
+        "version": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "system": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "displayElement": {"$ref": "#/definitions/FhirString"},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "codeElement": {"$ref": "#/definitions/Code"},
+        "userSelectedElement": {"$ref": "#/definitions/FhirBoolean"},
+        "systemElement": {"$ref": "#/definitions/FhirUri"}
+      }
+    },
+    "FhirBoolean": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "objectValue": {"anyOf": [
+          {},
+          {"type": "null"}
+        ]},
+        "value": {"anyOf": [
+          {"type": "boolean"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "FhirDecimal": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "objectValue": {"anyOf": [
+          {},
+          {"type": "null"}
+        ]},
+        "value": {"anyOf": [
+          {"type": "number"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "ResourceReference": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "identifier": {"$ref": "#/definitions/Identifier"},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "display": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "type": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "url": {"anyOf": [
+          {
+            "format": "uri",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "isContainedReference": {
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "reference": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "referenceElement": {"$ref": "#/definitions/FhirString"},
+        "displayElement": {"$ref": "#/definitions/FhirString"},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeElement": {"$ref": "#/definitions/FhirUri"}
+      }
+    },
+    "SearchEntryModeCode": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "objectValue": {"anyOf": [
+          {},
+          {"type": "null"}
+        ]},
+        "value": {"$ref": "#/definitions/SearchEntryMode"}
+      }
+    },
+    "RequestComponent": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "ifMatchElement": {"$ref": "#/definitions/FhirString"},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "ifModifiedSinceElement": {"$ref": "#/definitions/Instant"},
+        "method": {"$ref": "#/definitions/HTTPVerb"},
+        "modifierExtension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "urlElement": {"$ref": "#/definitions/FhirUri"},
+        "ifModifiedSince": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "ifNoneMatchElement": {"$ref": "#/definitions/FhirString"},
+        "url": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "ifNoneMatch": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "methodElement": {"$ref": "#/definitions/HTTPVerbCode"},
+        "ifMatch": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "ifNoneExistElement": {"$ref": "#/definitions/FhirString"},
+        "ifNoneExist": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "Bundle": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "predecessorVersionLink": {"anyOf": [
+          {
+            "format": "uri",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "idElement": {"$ref": "#/definitions/Id"},
+        "signature": {"$ref": "#/definitions/Signature"},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "link": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/LinkComponent"}
+          },
+          {"type": "null"}
+        ]},
+        "language": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "type": {"$ref": "#/definitions/BundleType"},
+        "lastLink": {"anyOf": [
+          {
+            "format": "uri",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "implicitRulesElement": {"$ref": "#/definitions/FhirUri"},
+        "total": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeElement": {"$ref": "#/definitions/BundleTypeCode"},
+        "id": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "timestamp": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "totalElement": {"$ref": "#/definitions/UnsignedInt"},
+        "firstLink": {"anyOf": [
+          {
+            "format": "uri",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "identifier": {"$ref": "#/definitions/Identifier"},
+        "searchLink": {"anyOf": [
+          {
+            "format": "uri",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "alternate": {"anyOf": [
+          {
+            "format": "uri",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "selfLink": {"anyOf": [
+          {
+            "format": "uri",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "nextLink": {"anyOf": [
+          {
+            "format": "uri",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "languageElement": {"$ref": "#/definitions/Code"},
+        "resourceBase": {"anyOf": [
+          {
+            "format": "uri",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "entry": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/EntryComponent"}
+          },
+          {"type": "null"}
+        ]},
+        "versionId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "previousLink": {"anyOf": [
+          {
+            "format": "uri",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "meta": {"$ref": "#/definitions/Meta"},
+        "implicitRules": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "timestampElement": {"$ref": "#/definitions/Instant"},
+        "hasVersionId": {
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "resourceType": {"$ref": "#/definitions/ResourceType"},
+        "base": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "Instant": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "objectValue": {"anyOf": [
+          {},
+          {"type": "null"}
+        ]},
+        "value": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "Resource": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "idElement": {"$ref": "#/definitions/Id"},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "language": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "languageElement": {"$ref": "#/definitions/Code"},
+        "resourceBase": {"anyOf": [
+          {
+            "format": "uri",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "implicitRulesElement": {"$ref": "#/definitions/FhirUri"},
+        "versionId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "meta": {"$ref": "#/definitions/Meta"},
+        "implicitRules": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "id": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "hasVersionId": {
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "resourceType": {"$ref": "#/definitions/ResourceType"}
+      }
+    },
+    "EntryComponent": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "request": {"$ref": "#/definitions/RequestComponent"},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "resource": {"$ref": "#/definitions/Resource"},
+        "fullUrl": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "modifierExtension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "link": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/LinkComponent"}
+          },
+          {"type": "null"}
+        ]},
+        "search": {"$ref": "#/definitions/SearchComponent"},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "response": {"$ref": "#/definitions/ResponseComponent"},
+        "fullUrlElement": {"$ref": "#/definitions/FhirUri"},
+        "base": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "Period": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "endElement": {"$ref": "#/definitions/FhirDateTime"},
+        "startElement": {"$ref": "#/definitions/FhirDateTime"},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "start": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "end": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "ResourceType": {
+      "maximum": 2147483647,
+      "type": "integer",
+      "minimum": -2147483648,
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167
+      ]
+    },
+    "Code": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "objectValue": {"anyOf": [
+          {},
+          {"type": "null"}
+        ]},
+        "value": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "Base": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "BundleTypeCode": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "objectValue": {"anyOf": [
+          {},
+          {"type": "null"}
+        ]},
+        "value": {"$ref": "#/definitions/BundleType"}
+      }
+    },
+    "Extension": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "value": {"$ref": "#/definitions/Element"},
+        "url": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "UnsignedInt": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "objectValue": {"anyOf": [
+          {},
+          {"type": "null"}
+        ]},
+        "value": {"anyOf": [
+          {
+            "maximum": 2147483647,
+            "type": "integer",
+            "minimum": -2147483648
+          },
+          {"type": "null"}
+        ]}
+      }
+    },
+    "ResponseComponent": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "etagElement": {"$ref": "#/definitions/FhirString"},
+        "modifierExtension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "lastModifiedElement": {"$ref": "#/definitions/Instant"},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "locationElement": {"$ref": "#/definitions/FhirUri"},
+        "statusElement": {"$ref": "#/definitions/FhirString"},
+        "location": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "etag": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "lastModified": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "outcome": {"$ref": "#/definitions/Resource"},
+        "status": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "Signature": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "whenElement": {"$ref": "#/definitions/Instant"},
+        "data": {"anyOf": [
+          {
+            "format": "byte",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "onBehalfOf": {"$ref": "#/definitions/ResourceReference"},
+        "sigFormat": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "dataElement": {"$ref": "#/definitions/Base64Binary"},
+        "type": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Coding"}
+          },
+          {"type": "null"}
+        ]},
+        "when": {"anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "targetFormat": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "targetFormatElement": {"$ref": "#/definitions/Code"},
+        "sigFormatElement": {"$ref": "#/definitions/Code"},
+        "who": {"$ref": "#/definitions/ResourceReference"}
+      }
+    },
+    "LinkComponent": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "relationElement": {"$ref": "#/definitions/FhirString"},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "modifierExtension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "urlElement": {"$ref": "#/definitions/FhirUri"},
+        "url": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "relation": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "SearchComponent": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "mode": {"$ref": "#/definitions/SearchEntryMode"},
+        "score": {"anyOf": [
+          {"type": "number"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "modifierExtension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "scoreElement": {"$ref": "#/definitions/FhirDecimal"},
+        "modeElement": {"$ref": "#/definitions/SearchEntryModeCode"}
+      }
+    },
+    "Id": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "objectValue": {"anyOf": [
+          {},
+          {"type": "null"}
+        ]},
+        "value": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]}
+      }
+    },
+    "CodeableConcept": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "elementId": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "coding": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Coding"}
+          },
+          {"type": "null"}
+        ]},
+        "extension": {"anyOf": [
+          {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Extension"}
+          },
+          {"type": "null"}
+        ]},
+        "userData": {"anyOf": [
+          {
+            "readOnly": true,
+            "additionalProperties": {},
+            "type": "object"
+          },
+          {"type": "null"}
+        ]},
+        "children": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "array",
+            "items": {"$ref": "#/definitions/Base"}
+          },
+          {"type": "null"}
+        ]},
+        "typeName": {"anyOf": [
+          {
+            "readOnly": true,
+            "type": "string"
+          },
+          {"type": "null"}
+        ]},
+        "text": {"anyOf": [
+          {"type": "string"},
+          {"type": "null"}
+        ]},
+        "textElement": {"$ref": "#/definitions/FhirString"}
+      }
+    }
+  }
+}
