@@ -64,8 +64,6 @@ endpoints:
                 description: This operation converts a FHIR R4 bundle (including one from CDA-to-FHIR, HL7-to-FHIR, or Combine Bundles) into the Observational Medical Outcomes Partnership (OMOP) Common Data Model format.
                 inputMediaType: application/json
                 outputMediaType: application/zip
-                
-                # ignore omopVersion parameter due to bug with string parameters
                 expects:
                    queryParameters:
                       omopVersion:
@@ -86,58 +84,3 @@ endpoints:
                 description: This operation converts a CDA document into human-readable HTML.
                 inputMediaType: application/xml
                 outputMediaType: application/html
-
-
-    # ignore operations due to bug with string parameters
-    /HL7toFHIRR4/{patientId}:
-        ignored: true
-        # operations:
-            # post:
-                # displayName: Convert HL7 to FHIR R4 and assign Patient ID
-                # description: This operation converts one or more HL7v2 messages into a FHIR R4 bundle.
-                # inputMediaType: text/plain
-                # outputMediaType: application/fhir+json
-
-    /CDAtoFHIRR4/{patientId}:
-        ignored: true
-        # operations:
-            # post:
-                # displayName: Convert CDA to FHIR R4 and assign Patient ID
-                # description: This operation converts a CDA document into a FHIR R4 bundle.
-                # inputMediaType: application/xml
-                # outputMediaType: application/fhir+json
-
-    /X12toFHIRR4/{patientId}:
-        ignored: true
-        # operations:
-            # post:
-                # displayName: Convert X12 to FHIR R4 and assign Patient ID
-                # description: This operation converts an X12 document into a FHIR R4 bundle.
-                # inputMediaType: text/plain
-                # outputMediaType: application/fhir+json
-
-    /CombineFHIRR4Bundles/{patientId}:
-        ignored: true
-        # operations:
-            # post:
-                # displayName: Combine FHIR R4 Bundles and assign Patient ID
-                # description: This operation aggregates information retrieved from prior Convert API requests into a single entry.
-                # inputMediaType: application/x-ndjson
-                # outputMediaType: application/fhir+json
-
-
-    # ignore operations not yet available on documentation site
-    /ExtractCcdaDocumentsConvertToFhirR4/{patientId}:
-        ignored: true
-    
-    /FHIRR4toCda/{patientId}:
-        ignored: true
-        
-    /FHIRDSTU2ToFHIRR4:
-        ignored: true
-        
-    /FHIRSTU3ToFHIRR4:
-        ignored: true
-        
-    /FHIRR4ToFHIRR4:
-        ignored: true
