@@ -1,0 +1,30 @@
+package com.mulesoft.connectors.orchestrateconvertapiconnectormule4.internal.config;
+
+import com.mulesoft.connectors.orchestrateconvertapiconnectormule4.internal.config.refinement.OrchestrateConvertApiConnectorMule4ConfigurationRefinement;
+import com.mulesoft.connectors.orchestrateconvertapiconnectormule4.internal.connection.provider.ApiKeyAuthConnectionProvider;
+import com.mulesoft.connectors.orchestrateconvertapiconnectormule4.internal.operation.PostCdatoFhirr4Operation;
+import com.mulesoft.connectors.orchestrateconvertapiconnectormule4.internal.operation.PostCdatoHtmlOperation;
+import com.mulesoft.connectors.orchestrateconvertapiconnectormule4.internal.operation.PostCdatoPdfOperation;
+import com.mulesoft.connectors.orchestrateconvertapiconnectormule4.internal.operation.PostCombineFhirr4bundlesOperation;
+import com.mulesoft.connectors.orchestrateconvertapiconnectormule4.internal.operation.PostFhirr4toCdaOperation;
+import com.mulesoft.connectors.orchestrateconvertapiconnectormule4.internal.operation.PostFhirr4toOmopOperation;
+import com.mulesoft.connectors.orchestrateconvertapiconnectormule4.internal.operation.PostHl7toFhirr4Operation;
+import com.mulesoft.connectors.orchestrateconvertapiconnectormule4.internal.operation.PostX12toFhirr4Operation;
+import org.mule.runtime.extension.api.annotation.Configuration;
+import org.mule.runtime.extension.api.annotation.Operations;
+import org.mule.runtime.extension.api.annotation.connectivity.ConnectionProviders;
+
+@Configuration
+@Operations({
+  PostCombineFhirr4bundlesOperation.class,
+  PostCdatoFhirr4Operation.class,
+  PostCdatoHtmlOperation.class,
+  PostCdatoPdfOperation.class,
+  PostFhirr4toCdaOperation.class,
+  PostHl7toFhirr4Operation.class,
+  PostFhirr4toOmopOperation.class,
+  PostX12toFhirr4Operation.class
+})
+@ConnectionProviders({ApiKeyAuthConnectionProvider.class})
+public class OrchestrateConvertApiConnectorMule4Configuration
+    extends OrchestrateConvertApiConnectorMule4ConfigurationRefinement {}

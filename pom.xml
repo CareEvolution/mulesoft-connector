@@ -5,8 +5,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>Orchestrate Convert API</name>
-    <description>The Convert API transforms your input data between standardized formats (FHIR, HL7, C-CDA, and more) and enhances the output through terminology normalization, de-duplication, and combining FHIR bundles to create a consolidated single person record. https://orchestrate.docs.careevolution.com/convert/</description>
+    <name>Orchestrate Convert API Connector - Mule 4</name>
+    <description>The Convert API transforms your input data between standardized formats (FHIR, HL7, C-CDA, and more) and enhances the output through terminology normalization, de-duplication, and combining FHIR bundles to create a consolidated single person record.</description>
     <parent>
         <groupId>com.mulesoft.connectivity</groupId>
         <artifactId>rest-sdk-connector-parent-pom</artifactId>
@@ -14,7 +14,7 @@
     </parent>
 
     <groupId>com.mulesoft.connectors</groupId>
-    <artifactId>orchestrateconvertapi</artifactId>
+    <artifactId>mule4-orchestrateconvertapi-connector</artifactId>
     <version>1.0.0</version>
     <packaging>mule-extension</packaging>
 
