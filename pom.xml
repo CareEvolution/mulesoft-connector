@@ -28,18 +28,7 @@
             <plugin>
                 <groupId>org.mule.runtime.plugins</groupId>
                 <artifactId>mule-extensions-maven-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.mule.runtime</groupId>
-                        <artifactId>mule-extensions-api</artifactId>
-                        <version>1.3.0-20210823</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.mule.runtime</groupId>
-                        <artifactId>mule-module-extensions-support</artifactId>
-                        <version>4.3.0-20210823</version>
-                    </dependency>
-                </dependencies>
+				<version>1.5.1</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
