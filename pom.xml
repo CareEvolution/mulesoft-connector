@@ -28,7 +28,7 @@
             <plugin>
                 <groupId>org.mule.runtime.plugins</groupId>
                 <artifactId>mule-extensions-maven-plugin</artifactId>
-				<version>1.5.1</version>
+                <version>1.4.1</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
