@@ -1,0 +1,818 @@
+
+
+= Orchestrate Convert API Module Connector Reference
+
+
+
+== Configurations
+---
+[[Config]]
+=== Config
+
+
+==== Parameters
+
+[%header%autowidth.spread]
+|===
+| Name | Type | Description | Default Value | Required
+|Name | String | The name for this configuration. Connectors reference the configuration with this name. | | *x*{nbsp}
+| Connection a| <<Config_ApiKeyAuth, Api Key Auth Connection Provider>>
+ | The connection types that can be provided to this configuration. | | *x*{nbsp}
+| Response Timeout a| Number |  The timeout for request to the remote service. |  60 | {nbsp}
+| Response Timeout Unit a| Enumeration, one of:
+
+** NANOSECONDS
+** MICROSECONDS
+** MILLISECONDS
+** SECONDS
+** MINUTES
+** HOURS
+** DAYS |  A time unit which qualifies the Response Timeout} |  SECONDS | {nbsp}
+| Streaming Type a| String |  Defines if the request should be sent using streaming. Setting the value to AUTO will automatically define the best strategy based on the request content. |  AUTO | {nbsp}
+| Name a| String |  The identifier of this element used to reference it in other components |  | *x*{nbsp}
+| Expiration Policy a| <<ExpirationPolicy>> |  Configures the minimum amount of time that a dynamic configuration instance can remain idle before the runtime considers it eligible for expiration. This does not mean that the platform will expire the instance at the exact moment that it becomes eligible. The runtime will actually purge the instances when it sees it fit. |  | {nbsp}
+|===
+
+==== Connection Types
+[[Config_ApiKeyAuth]]
+===== Api Key Auth Connection Provider
+
+
+This is the last layer of the connection provider generation gap pattern. It is what finally gets exposed as the connection provider, including all customizations made in the refinement layer.
+
+
+====== Parameters
+
+[%header%autowidth.spread]
+|===
+| Name | Type | Description | Default Value | Required
+| Default headers a| Object |  |  | {nbsp}
+| Default query parameters a| Object |  |  | {nbsp}
+| Connection Timeout a| Number |  The timeout for establishing connections to the remote service |  30 | {nbsp}
+| Connection Timeout Unit a| Enumeration, one of:
+
+** NANOSECONDS
+** MICROSECONDS
+** MILLISECONDS
+** SECONDS
+** MINUTES
+** HOURS
+** DAYS |  A time unit which qualifies the Connection Timeout |  SECONDS | {nbsp}
+| Use Persistent Connections a| Boolean |  If false, each connection will be closed after the first request is completed. |  true | {nbsp}
+| Max Connections a| Number |  The maximum number of outbound connections that will be kept open at the same time |  -1 | {nbsp}
+| Connection Idle Timeout a| Number |  A timeout for how long a connection can remain idle before it is closed |  30 | {nbsp}
+| Connection Idle Timeout Unit a| Enumeration, one of:
+
+** NANOSECONDS
+** MICROSECONDS
+** MILLISECONDS
+** SECONDS
+** MINUTES
+** HOURS
+** DAYS |  A time unit which qualifies the connection Idle Timeout |  SECONDS | {nbsp}
+| Stream Response a| Boolean |  Whether or not received responses should be streamed |  false | {nbsp}
+| Response Buffer Size a| Number |  The space in bytes for the buffer where the HTTP response will be stored. |  -1 | {nbsp}
+| Proxy Config a| <<Proxy>> |  Reusable configuration element for outbound connections through a proxy. A proxy element must define a host name and a port attributes, and optionally can define a username and a password. |  | {nbsp}
+| API Key a| String |  X API Key |  | *x*{nbsp}
+| Protocol a| Enumeration, one of:
+
+** HTTP
+** HTTPS |  Protocol to use for communication. Valid values are HTTP and HTTPS |  HTTP | {nbsp}
+| TLS Configuration a| <<Tls>> |  |  | {nbsp}
+| Reconnection a| <<Reconnection>> |  When the application is deployed, a connectivity test is performed on all connectors. If set to true, deployment will fail if the test doesn't pass after exhausting the associated reconnection strategy |  | {nbsp}
+|===
+
+==== Associated Operations
+* <<PostCdatoFhirr4>> {nbsp}
+* <<PostCdatoHtml>> {nbsp}
+* <<PostCdatoPdf>> {nbsp}
+* <<PostCombineFhirr4bundles>> {nbsp}
+* <<PostFhirr4toCda>> {nbsp}
+* <<PostFhirr4toOmop>> {nbsp}
+* <<PostHl7toFhirr4>> {nbsp}
+* <<PostX12toFhirr4>> {nbsp}
+
+
+
+== Operations
+
+[[PostCdatoFhirr4]]
+== Convert CDA to FHIR R4
+`<orchestrate-convert-api-connector-mule-4:post-cdato-fhirr4>`
+
+
+This operation converts a CDA document into a FHIR R4 bundle. This operation makes an HTTP POST request to the /CDAtoFHIRR4 endpoint
+
+
+=== Parameters
+
+[%header%autowidth.spread]
+|===
+| Name | Type | Description | Default Value | Required
+| Configuration | String | The name of the configuration to use. | | *x*{nbsp}
+| Include Cda In The Output a| Boolean |  Include Cda In The Output |  false | {nbsp}
+| Not Include Document Id In Data Source a| Boolean |  Not Include Document Id In Data Source |  false | {nbsp}
+| Body a| String |  the content to use |  #[payload] | {nbsp}
+| Config Ref a| ConfigurationProvider |  The name of the configuration to be used to execute this component |  | *x*{nbsp}
+| Streaming Strategy a| * <<RepeatableInMemoryStream>>
+* <<RepeatableFileStoreStream>>
+* non-repeatable-stream |  Configure if repeatable streams should be used and their behaviour |  | {nbsp}
+| Custom Query Parameters a| Object |  |  #[null] | {nbsp}
+| Custom Headers a| Object |  |  #[null] | {nbsp}
+| Response Timeout a| Number |  The timeout for request to the remote service. |  | {nbsp}
+| Response Timeout Unit a| Enumeration, one of:
+
+** NANOSECONDS
+** MICROSECONDS
+** MILLISECONDS
+** SECONDS
+** MINUTES
+** HOURS
+** DAYS |  A time unit which qualifies the Response Timeout} |  | {nbsp}
+| Streaming Type a| String |  Defines if the request should be sent using streaming. Setting the value to AUTO will automatically define the best strategy based on the request content. |  | {nbsp}
+| Target Variable a| String |  The name of a variable on which the operation's output will be placed |  | {nbsp}
+| Target Value a| String |  An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable |  #[payload] | {nbsp}
+| Reconnection Strategy a| * <<Reconnect>>
+* <<ReconnectForever>> |  A retry strategy in case of connectivity errors |  | {nbsp}
+|===
+
+=== Output
+
+[%autowidth.spread]
+|===
+| *Type* a| Any
+| *Attributes Type* a| <<HttpResponseAttributes>>
+|===
+
+=== For Configurations
+
+* <<Config>> {nbsp}
+
+=== Throws
+
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:BAD_REQUEST {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CLIENT_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CONNECTIVITY {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:INTERNAL_SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_ACCEPTABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_FOUND {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:RETRY_EXHAUSTED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVICE_UNAVAILABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TIMEOUT {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TOO_MANY_REQUESTS {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNAUTHORIZED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNSUPPORTED_MEDIA_TYPE {nbsp}
+
+
+[[PostCdatoHtml]]
+== Convert CDA to HTML
+`<orchestrate-convert-api-connector-mule-4:post-cdato-html>`
+
+
+This operation converts a CDA document into human-readable HTML. This operation makes an HTTP POST request to the /CDAtoHTML endpoint
+
+
+=== Parameters
+
+[%header%autowidth.spread]
+|===
+| Name | Type | Description | Default Value | Required
+| Configuration | String | The name of the configuration to use. | | *x*{nbsp}
+| Body a| String |  the content to use |  #[payload] | {nbsp}
+| Config Ref a| ConfigurationProvider |  The name of the configuration to be used to execute this component |  | *x*{nbsp}
+| Streaming Strategy a| * <<RepeatableInMemoryStream>>
+* <<RepeatableFileStoreStream>>
+* non-repeatable-stream |  Configure if repeatable streams should be used and their behaviour |  | {nbsp}
+| Custom Query Parameters a| Object |  |  #[null] | {nbsp}
+| Custom Headers a| Object |  |  #[null] | {nbsp}
+| Response Timeout a| Number |  The timeout for request to the remote service. |  | {nbsp}
+| Response Timeout Unit a| Enumeration, one of:
+
+** NANOSECONDS
+** MICROSECONDS
+** MILLISECONDS
+** SECONDS
+** MINUTES
+** HOURS
+** DAYS |  A time unit which qualifies the Response Timeout} |  | {nbsp}
+| Streaming Type a| String |  Defines if the request should be sent using streaming. Setting the value to AUTO will automatically define the best strategy based on the request content. |  | {nbsp}
+| Target Variable a| String |  The name of a variable on which the operation's output will be placed |  | {nbsp}
+| Target Value a| String |  An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable |  #[payload] | {nbsp}
+| Reconnection Strategy a| * <<Reconnect>>
+* <<ReconnectForever>> |  A retry strategy in case of connectivity errors |  | {nbsp}
+|===
+
+=== Output
+
+[%autowidth.spread]
+|===
+| *Type* a| String
+| *Attributes Type* a| <<HttpResponseAttributes>>
+|===
+
+=== For Configurations
+
+* <<Config>> {nbsp}
+
+=== Throws
+
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:BAD_REQUEST {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CLIENT_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CONNECTIVITY {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:INTERNAL_SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_ACCEPTABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_FOUND {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:RETRY_EXHAUSTED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVICE_UNAVAILABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TIMEOUT {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TOO_MANY_REQUESTS {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNAUTHORIZED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNSUPPORTED_MEDIA_TYPE {nbsp}
+
+
+[[PostCdatoPdf]]
+== Convert CDA to PDF
+`<orchestrate-convert-api-connector-mule-4:post-cdato-pdf>`
+
+
+This operation converts a CDA document into a PDF document. This operation makes an HTTP POST request to the /CDAtoPDF endpoint
+
+
+=== Parameters
+
+[%header%autowidth.spread]
+|===
+| Name | Type | Description | Default Value | Required
+| Configuration | String | The name of the configuration to use. | | *x*{nbsp}
+| Body a| String |  the content to use |  #[payload] | {nbsp}
+| Config Ref a| ConfigurationProvider |  The name of the configuration to be used to execute this component |  | *x*{nbsp}
+| Streaming Strategy a| * <<RepeatableInMemoryStream>>
+* <<RepeatableFileStoreStream>>
+* non-repeatable-stream |  Configure if repeatable streams should be used and their behaviour |  | {nbsp}
+| Custom Query Parameters a| Object |  |  #[null] | {nbsp}
+| Custom Headers a| Object |  |  #[null] | {nbsp}
+| Response Timeout a| Number |  The timeout for request to the remote service. |  | {nbsp}
+| Response Timeout Unit a| Enumeration, one of:
+
+** NANOSECONDS
+** MICROSECONDS
+** MILLISECONDS
+** SECONDS
+** MINUTES
+** HOURS
+** DAYS |  A time unit which qualifies the Response Timeout} |  | {nbsp}
+| Streaming Type a| String |  Defines if the request should be sent using streaming. Setting the value to AUTO will automatically define the best strategy based on the request content. |  | {nbsp}
+| Target Variable a| String |  The name of a variable on which the operation's output will be placed |  | {nbsp}
+| Target Value a| String |  An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable |  #[payload] | {nbsp}
+| Reconnection Strategy a| * <<Reconnect>>
+* <<ReconnectForever>> |  A retry strategy in case of connectivity errors |  | {nbsp}
+|===
+
+=== Output
+
+[%autowidth.spread]
+|===
+| *Type* a| Number
+| *Attributes Type* a| <<HttpResponseAttributes>>
+|===
+
+=== For Configurations
+
+* <<Config>> {nbsp}
+
+=== Throws
+
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:BAD_REQUEST {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CLIENT_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CONNECTIVITY {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:INTERNAL_SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_ACCEPTABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_FOUND {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:RETRY_EXHAUSTED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVICE_UNAVAILABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TIMEOUT {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TOO_MANY_REQUESTS {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNAUTHORIZED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNSUPPORTED_MEDIA_TYPE {nbsp}
+
+
+[[PostCombineFhirr4bundles]]
+== Combine FHIR R4 Bundles
+`<orchestrate-convert-api-connector-mule-4:post-combine-fhirr4bundles>`
+
+
+This operation aggregates information retrieved from prior Convert API requests into a single entry. This operation makes an HTTP POST request to the /CombineFHIRR4Bundles endpoint
+
+
+=== Parameters
+
+[%header%autowidth.spread]
+|===
+| Name | Type | Description | Default Value | Required
+| Configuration | String | The name of the configuration to use. | | *x*{nbsp}
+| Body a| String |  the content to use |  #[payload] | {nbsp}
+| Config Ref a| ConfigurationProvider |  The name of the configuration to be used to execute this component |  | *x*{nbsp}
+| Streaming Strategy a| * <<RepeatableInMemoryStream>>
+* <<RepeatableFileStoreStream>>
+* non-repeatable-stream |  Configure if repeatable streams should be used and their behaviour |  | {nbsp}
+| Custom Query Parameters a| Object |  |  #[null] | {nbsp}
+| Custom Headers a| Object |  |  #[null] | {nbsp}
+| Response Timeout a| Number |  The timeout for request to the remote service. |  | {nbsp}
+| Response Timeout Unit a| Enumeration, one of:
+
+** NANOSECONDS
+** MICROSECONDS
+** MILLISECONDS
+** SECONDS
+** MINUTES
+** HOURS
+** DAYS |  A time unit which qualifies the Response Timeout} |  | {nbsp}
+| Streaming Type a| String |  Defines if the request should be sent using streaming. Setting the value to AUTO will automatically define the best strategy based on the request content. |  | {nbsp}
+| Target Variable a| String |  The name of a variable on which the operation's output will be placed |  | {nbsp}
+| Target Value a| String |  An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable |  #[payload] | {nbsp}
+| Reconnection Strategy a| * <<Reconnect>>
+* <<ReconnectForever>> |  A retry strategy in case of connectivity errors |  | {nbsp}
+|===
+
+=== Output
+
+[%autowidth.spread]
+|===
+| *Type* a| Any
+| *Attributes Type* a| <<HttpResponseAttributes>>
+|===
+
+=== For Configurations
+
+* <<Config>> {nbsp}
+
+=== Throws
+
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:BAD_REQUEST {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CLIENT_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CONNECTIVITY {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:INTERNAL_SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_ACCEPTABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_FOUND {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:RETRY_EXHAUSTED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVICE_UNAVAILABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TIMEOUT {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TOO_MANY_REQUESTS {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNAUTHORIZED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNSUPPORTED_MEDIA_TYPE {nbsp}
+
+
+[[PostFhirr4toCda]]
+== Convert FHIR R4 to CDA
+`<orchestrate-convert-api-connector-mule-4:post-fhirr4to-cda>`
+
+
+This operation converts a FHIR R4 bundle (including one from HL7-to-FHIR or Combine Bundles) into an aggregated CDA document. This operation makes an HTTP POST request to the /FHIRR4toCda endpoint
+
+
+=== Parameters
+
+[%header%autowidth.spread]
+|===
+| Name | Type | Description | Default Value | Required
+| Configuration | String | The name of the configuration to use. | | *x*{nbsp}
+| Body a| String |  the content to use |  #[payload] | {nbsp}
+| Config Ref a| ConfigurationProvider |  The name of the configuration to be used to execute this component |  | *x*{nbsp}
+| Streaming Strategy a| * <<RepeatableInMemoryStream>>
+* <<RepeatableFileStoreStream>>
+* non-repeatable-stream |  Configure if repeatable streams should be used and their behaviour |  | {nbsp}
+| Custom Query Parameters a| Object |  |  #[null] | {nbsp}
+| Custom Headers a| Object |  |  #[null] | {nbsp}
+| Response Timeout a| Number |  The timeout for request to the remote service. |  | {nbsp}
+| Response Timeout Unit a| Enumeration, one of:
+
+** NANOSECONDS
+** MICROSECONDS
+** MILLISECONDS
+** SECONDS
+** MINUTES
+** HOURS
+** DAYS |  A time unit which qualifies the Response Timeout} |  | {nbsp}
+| Streaming Type a| String |  Defines if the request should be sent using streaming. Setting the value to AUTO will automatically define the best strategy based on the request content. |  | {nbsp}
+| Target Variable a| String |  The name of a variable on which the operation's output will be placed |  | {nbsp}
+| Target Value a| String |  An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable |  #[payload] | {nbsp}
+| Reconnection Strategy a| * <<Reconnect>>
+* <<ReconnectForever>> |  A retry strategy in case of connectivity errors |  | {nbsp}
+|===
+
+=== Output
+
+[%autowidth.spread]
+|===
+| *Type* a| String
+| *Attributes Type* a| <<HttpResponseAttributes>>
+|===
+
+=== For Configurations
+
+* <<Config>> {nbsp}
+
+=== Throws
+
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:BAD_REQUEST {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CLIENT_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CONNECTIVITY {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:INTERNAL_SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_ACCEPTABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_FOUND {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:RETRY_EXHAUSTED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVICE_UNAVAILABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TIMEOUT {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TOO_MANY_REQUESTS {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNAUTHORIZED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNSUPPORTED_MEDIA_TYPE {nbsp}
+
+
+[[PostFhirr4toOmop]]
+== Convert FHIR R4 to OMOP
+`<orchestrate-convert-api-connector-mule-4:post-fhirr4to-omop>`
+
+
+This operation converts a FHIR R4 bundle (including one from CDA-to-FHIR, HL7-to-FHIR, or Combine Bundles) into the Observational Medical Outcomes Partnership (OMOP) Common Data Model format. This operation makes an HTTP POST request to the /FHIRR4ToOMOP endpoint
+
+
+=== Parameters
+
+[%header%autowidth.spread]
+|===
+| Name | Type | Description | Default Value | Required
+| Configuration | String | The name of the configuration to use. | | *x*{nbsp}
+| Include Pii Tables a| Boolean |  Include Pii Tables |  false | {nbsp}
+| Body a| String |  the content to use |  #[payload] | {nbsp}
+| Config Ref a| ConfigurationProvider |  The name of the configuration to be used to execute this component |  | *x*{nbsp}
+| Streaming Strategy a| * <<RepeatableInMemoryStream>>
+* <<RepeatableFileStoreStream>>
+* non-repeatable-stream |  Configure if repeatable streams should be used and their behaviour |  | {nbsp}
+| Custom Query Parameters a| Object |  |  #[null] | {nbsp}
+| Custom Headers a| Object |  |  #[null] | {nbsp}
+| Response Timeout a| Number |  The timeout for request to the remote service. |  | {nbsp}
+| Response Timeout Unit a| Enumeration, one of:
+
+** NANOSECONDS
+** MICROSECONDS
+** MILLISECONDS
+** SECONDS
+** MINUTES
+** HOURS
+** DAYS |  A time unit which qualifies the Response Timeout} |  | {nbsp}
+| Streaming Type a| String |  Defines if the request should be sent using streaming. Setting the value to AUTO will automatically define the best strategy based on the request content. |  | {nbsp}
+| Target Variable a| String |  The name of a variable on which the operation's output will be placed |  | {nbsp}
+| Target Value a| String |  An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable |  #[payload] | {nbsp}
+| Reconnection Strategy a| * <<Reconnect>>
+* <<ReconnectForever>> |  A retry strategy in case of connectivity errors |  | {nbsp}
+|===
+
+=== Output
+
+[%autowidth.spread]
+|===
+| *Type* a| Any
+| *Attributes Type* a| <<HttpResponseAttributes>>
+|===
+
+=== For Configurations
+
+* <<Config>> {nbsp}
+
+=== Throws
+
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:BAD_REQUEST {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CLIENT_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CONNECTIVITY {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:INTERNAL_SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_ACCEPTABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_FOUND {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:RETRY_EXHAUSTED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVICE_UNAVAILABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TIMEOUT {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TOO_MANY_REQUESTS {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNAUTHORIZED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNSUPPORTED_MEDIA_TYPE {nbsp}
+
+
+[[PostHl7toFhirr4]]
+== Convert HL7 to FHIR R4
+`<orchestrate-convert-api-connector-mule-4:post-hl7to-fhirr4>`
+
+
+This operation converts one or more HL7v2 messages into a FHIR R4 bundle. This operation makes an HTTP POST request to the /HL7toFHIRR4 endpoint
+
+
+=== Parameters
+
+[%header%autowidth.spread]
+|===
+| Name | Type | Description | Default Value | Required
+| Configuration | String | The name of the configuration to use. | | *x*{nbsp}
+| Body a| String |  the content to use |  #[payload] | {nbsp}
+| Config Ref a| ConfigurationProvider |  The name of the configuration to be used to execute this component |  | *x*{nbsp}
+| Streaming Strategy a| * <<RepeatableInMemoryStream>>
+* <<RepeatableFileStoreStream>>
+* non-repeatable-stream |  Configure if repeatable streams should be used and their behaviour |  | {nbsp}
+| Custom Query Parameters a| Object |  |  #[null] | {nbsp}
+| Custom Headers a| Object |  |  #[null] | {nbsp}
+| Response Timeout a| Number |  The timeout for request to the remote service. |  | {nbsp}
+| Response Timeout Unit a| Enumeration, one of:
+
+** NANOSECONDS
+** MICROSECONDS
+** MILLISECONDS
+** SECONDS
+** MINUTES
+** HOURS
+** DAYS |  A time unit which qualifies the Response Timeout} |  | {nbsp}
+| Streaming Type a| String |  Defines if the request should be sent using streaming. Setting the value to AUTO will automatically define the best strategy based on the request content. |  | {nbsp}
+| Target Variable a| String |  The name of a variable on which the operation's output will be placed |  | {nbsp}
+| Target Value a| String |  An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable |  #[payload] | {nbsp}
+| Reconnection Strategy a| * <<Reconnect>>
+* <<ReconnectForever>> |  A retry strategy in case of connectivity errors |  | {nbsp}
+|===
+
+=== Output
+
+[%autowidth.spread]
+|===
+| *Type* a| Any
+| *Attributes Type* a| <<HttpResponseAttributes>>
+|===
+
+=== For Configurations
+
+* <<Config>> {nbsp}
+
+=== Throws
+
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:BAD_REQUEST {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CLIENT_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CONNECTIVITY {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:INTERNAL_SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_ACCEPTABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_FOUND {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:RETRY_EXHAUSTED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVICE_UNAVAILABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TIMEOUT {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TOO_MANY_REQUESTS {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNAUTHORIZED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNSUPPORTED_MEDIA_TYPE {nbsp}
+
+
+[[PostX12toFhirr4]]
+== Convert X12 to FHIR R4
+`<orchestrate-convert-api-connector-mule-4:post-x12to-fhirr4>`
+
+
+This operation converts an X12 document into a FHIR R4 bundle. This operation makes an HTTP POST request to the /X12toFHIRR4 endpoint
+
+
+=== Parameters
+
+[%header%autowidth.spread]
+|===
+| Name | Type | Description | Default Value | Required
+| Configuration | String | The name of the configuration to use. | | *x*{nbsp}
+| Body a| String |  the content to use |  #[payload] | {nbsp}
+| Config Ref a| ConfigurationProvider |  The name of the configuration to be used to execute this component |  | *x*{nbsp}
+| Streaming Strategy a| * <<RepeatableInMemoryStream>>
+* <<RepeatableFileStoreStream>>
+* non-repeatable-stream |  Configure if repeatable streams should be used and their behaviour |  | {nbsp}
+| Custom Query Parameters a| Object |  |  #[null] | {nbsp}
+| Custom Headers a| Object |  |  #[null] | {nbsp}
+| Response Timeout a| Number |  The timeout for request to the remote service. |  | {nbsp}
+| Response Timeout Unit a| Enumeration, one of:
+
+** NANOSECONDS
+** MICROSECONDS
+** MILLISECONDS
+** SECONDS
+** MINUTES
+** HOURS
+** DAYS |  A time unit which qualifies the Response Timeout} |  | {nbsp}
+| Streaming Type a| String |  Defines if the request should be sent using streaming. Setting the value to AUTO will automatically define the best strategy based on the request content. |  | {nbsp}
+| Target Variable a| String |  The name of a variable on which the operation's output will be placed |  | {nbsp}
+| Target Value a| String |  An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable |  #[payload] | {nbsp}
+| Reconnection Strategy a| * <<Reconnect>>
+* <<ReconnectForever>> |  A retry strategy in case of connectivity errors |  | {nbsp}
+|===
+
+=== Output
+
+[%autowidth.spread]
+|===
+| *Type* a| Any
+| *Attributes Type* a| <<HttpResponseAttributes>>
+|===
+
+=== For Configurations
+
+* <<Config>> {nbsp}
+
+=== Throws
+
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:BAD_REQUEST {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CLIENT_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:CONNECTIVITY {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:INTERNAL_SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_ACCEPTABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:NOT_FOUND {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:RETRY_EXHAUSTED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVER_ERROR {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:SERVICE_UNAVAILABLE {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TIMEOUT {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:TOO_MANY_REQUESTS {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNAUTHORIZED {nbsp}
+* ORCHESTRATE-CONVERT-API-CONNECTOR-MULE-4:UNSUPPORTED_MEDIA_TYPE {nbsp}
+
+
+
+== Types
+[[Proxy]]
+=== Proxy
+
+[cols=".^20%,.^25%,.^30%,.^15%,.^10%", options="header"]
+|======================
+| Field | Type | Description | Default Value | Required
+| Host a| String | Host where the proxy requests will be sent. |  | x
+| Port a| Number | Port where the proxy requests will be sent. |  | x
+| Username a| String | The username to authenticate against the proxy. |  | x
+| Password a| String | The password to authenticate against the proxy. |  | x
+| Non Proxy Hosts a| String | A list of comma separated hosts against which the proxy should not be used |  | x
+|======================
+
+[[Tls]]
+=== Tls
+
+[cols=".^20%,.^25%,.^30%,.^15%,.^10%", options="header"]
+|======================
+| Field | Type | Description | Default Value | Required
+| Enabled Protocols a| String | A comma separated list of protocols enabled for this context. |  | 
+| Enabled Cipher Suites a| String | A comma separated list of cipher suites enabled for this context. |  | 
+| Trust Store a| <<TrustStore>> |  |  | 
+| Key Store a| <<KeyStore>> |  |  | 
+| Revocation Check a| * <<StandardRevocationCheck>>
+* <<CustomOcspResponder>>
+* <<CrlFile>> |  |  | 
+|======================
+
+[[TrustStore]]
+=== Trust Store
+
+[cols=".^20%,.^25%,.^30%,.^15%,.^10%", options="header"]
+|======================
+| Field | Type | Description | Default Value | Required
+| Path a| String | The location (which will be resolved relative to the current classpath and file system, if possible) of the trust store. |  | 
+| Password a| String | The password used to protect the trust store. |  | 
+| Type a| String | The type of store used. |  | 
+| Algorithm a| String | The algorithm used by the trust store. |  | 
+| Insecure a| Boolean | If true, no certificate validations will be performed, rendering connections vulnerable to attacks. Use at your own risk. |  | 
+|======================
+
+[[KeyStore]]
+=== Key Store
+
+[cols=".^20%,.^25%,.^30%,.^15%,.^10%", options="header"]
+|======================
+| Field | Type | Description | Default Value | Required
+| Path a| String | The location (which will be resolved relative to the current classpath and file system, if possible) of the key store. |  | 
+| Type a| String | The type of store used. |  | 
+| Alias a| String | When the key store contains many private keys, this attribute indicates the alias of the key that should be used. If not defined, the first key in the file will be used by default. |  | 
+| Key Password a| String | The password used to protect the private key. |  | 
+| Password a| String | The password used to protect the key store. |  | 
+| Algorithm a| String | The algorithm used by the key store. |  | 
+|======================
+
+[[StandardRevocationCheck]]
+=== Standard Revocation Check
+
+[cols=".^20%,.^25%,.^30%,.^15%,.^10%", options="header"]
+|======================
+| Field | Type | Description | Default Value | Required
+| Only End Entities a| Boolean | Only verify the last element of the certificate chain. |  | 
+| Prefer Crls a| Boolean | Try CRL instead of OCSP first. |  | 
+| No Fallback a| Boolean | Do not use the secondary checking method (the one not selected before). |  | 
+| Soft Fail a| Boolean | Avoid verification failure when the revocation server can not be reached or is busy. |  | 
+|======================
+
+[[CustomOcspResponder]]
+=== Custom Ocsp Responder
+
+[cols=".^20%,.^25%,.^30%,.^15%,.^10%", options="header"]
+|======================
+| Field | Type | Description | Default Value | Required
+| Url a| String | The URL of the OCSP responder. |  | 
+| Cert Alias a| String | Alias of the signing certificate for the OCSP response (must be in the trust store), if present. |  | 
+|======================
+
+[[CrlFile]]
+=== Crl File
+
+[cols=".^20%,.^25%,.^30%,.^15%,.^10%", options="header"]
+|======================
+| Field | Type | Description | Default Value | Required
+| Path a| String | The path to the CRL file. |  | 
+|======================
+
+[[Reconnection]]
+=== Reconnection
+
+[cols=".^20%,.^25%,.^30%,.^15%,.^10%", options="header"]
+|======================
+| Field | Type | Description | Default Value | Required
+| Fails Deployment a| Boolean | When the application is deployed, a connectivity test is performed on all connectors. If set to true, deployment will fail if the test doesn't pass after exhausting the associated reconnection strategy |  | 
+| Reconnection Strategy a| * <<Reconnect>>
+* <<ReconnectForever>> | The reconnection strategy to use |  | 
+|======================
+
+[[Reconnect]]
+=== Reconnect
+
+[cols=".^20%,.^25%,.^30%,.^15%,.^10%", options="header"]
+|======================
+| Field | Type | Description | Default Value | Required
+| Frequency a| Number | How often (in ms) to reconnect |  | 
+| Blocking a| Boolean | If false, the reconnection strategy will run in a separate, non-blocking thread |  | 
+| Count a| Number | How many reconnection attempts to make |  | 
+|======================
+
+[[ReconnectForever]]
+=== Reconnect Forever
+
+[cols=".^20%,.^25%,.^30%,.^15%,.^10%", options="header"]
+|======================
+| Field | Type | Description | Default Value | Required
+| Frequency a| Number | How often (in ms) to reconnect |  | 
+| Blocking a| Boolean | If false, the reconnection strategy will run in a separate, non-blocking thread |  | 
+|======================
+
+[[ExpirationPolicy]]
+=== Expiration Policy
+
+[cols=".^20%,.^25%,.^30%,.^15%,.^10%", options="header"]
+|======================
+| Field | Type | Description | Default Value | Required
+| Max Idle Time a| Number | A scalar time value for the maximum amount of time a dynamic configuration instance should be allowed to be idle before it's considered eligible for expiration |  | 
+| Time Unit a| Enumeration, one of:
+
+** NANOSECONDS
+** MICROSECONDS
+** MILLISECONDS
+** SECONDS
+** MINUTES
+** HOURS
+** DAYS | A time unit that qualifies the maxIdleTime attribute |  | 
+|======================
+
+[[HttpResponseAttributes]]
+=== Http Response Attributes
+
+[cols=".^20%,.^25%,.^30%,.^15%,.^10%", options="header"]
+|======================
+| Field | Type | Description | Default Value | Required
+| Status Code a| Number |  |  | x
+| Headers a| Object |  |  | x
+| Reason Phrase a| String |  |  | x
+|======================
+
+[[RepeatableInMemoryStream]]
+=== Repeatable In Memory Stream
+
+[cols=".^20%,.^25%,.^30%,.^15%,.^10%", options="header"]
+|======================
+| Field | Type | Description | Default Value | Required
+| Initial Buffer Size a| Number | This is the amount of memory that will be allocated in order to consume the stream and provide random access to it. If the stream contains more data than can be fit into this buffer, then it will be expanded by according to the bufferSizeIncrement attribute, with an upper limit of maxInMemorySize. |  | 
+| Buffer Size Increment a| Number | This is by how much will be buffer size by expanded if it exceeds its initial size. Setting a value of zero or lower will mean that the buffer should not expand, meaning that a STREAM_MAXIMUM_SIZE_EXCEEDED error will be raised when the buffer gets full. |  | 
+| Max Buffer Size a| Number | This is the maximum amount of memory that will be used. If more than that is used then a STREAM_MAXIMUM_SIZE_EXCEEDED error will be raised. A value lower or equal to zero means no limit. |  | 
+| Buffer Unit a| Enumeration, one of:
+
+** BYTE
+** KB
+** MB
+** GB | The unit in which all these attributes are expressed |  | 
+|======================
+
+[[RepeatableFileStoreStream]]
+=== Repeatable File Store Stream
+
+[cols=".^20%,.^25%,.^30%,.^15%,.^10%", options="header"]
+|======================
+| Field | Type | Description | Default Value | Required
+| In Memory Size a| Number | Defines the maximum memory that the stream should use to keep data in memory. If more than that is consumed then it will start to buffer the content on disk. |  | 
+| Buffer Unit a| Enumeration, one of:
+
+** BYTE
+** KB
+** MB
+** GB | The unit in which maxInMemorySize is expressed |  | 
+|======================
+
